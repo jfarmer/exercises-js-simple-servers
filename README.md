@@ -192,7 +192,6 @@ In other words, the server works like this:
 1. Once the client connects, wait for them to send data
 1. Whatever data the client sends, send that same data back to the client (hence "echo")
 1. Close the connection
-1. Wait for another client
 
 To start the server, run this command:
 
@@ -216,16 +215,31 @@ and get feedback on your implementation!
 
 ### Hot or Cold Server
 
-Let's hook up the "hot or cold" kata from Week 1 to a server.  If you don't
-remember, the "hot or cold" kata is a command-line guessing game that tells
+Let's hook up the "hot or cold" exercise from Week 1 to a server.  If you don't
+remember, the "hot or cold" exercise is a command-line guessing game that tells
 us whether our guess is too high, too low, or just right.
 
 See `hot-or-cold-server.js` for more details.
+
+In other words, the server should do the following:
+
+1. Wait for a client to connect
+1. Once a client connects, wait for the client to send data
+1. If the client sends a number, send back to the client whether their guess was hot or cold
+1. Wait for more data until the guess is correct
+1. Once the client sends the correct guess, let the client know they guessed correctly and then close the connection
 
 ### MOTD Server
 
 "MOTD" stands for "message of the day."  Starting from `motd-server.js`, write a
 server that sends every client the contents of `motd.txt`.
+
+In other words, the server should do the following:
+
+1. Wait for a client to connect
+1. Once a client connects, read the contents of `motd.txt`
+1. Send that content back to the client
+1. Close the connection
 
 ### Document Server
 
