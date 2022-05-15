@@ -1,12 +1,5 @@
 # Simple Servers in JavaScript
 
-## [WIP] TODO Before Publish <!-- omit in toc -->
-
-This set of exercises isn't done yet. The following needs to be done before final version:
-
-- [ ] Replace old `telnet` screenshots with `nc` screenshots
-- [ ] Possibly record screencasts
-
 In these exercises, we're going to try to understand more about how computers talk
 to each other over a network. To do that, we're going to actually build a
 handful of very simple internet servers and connect to them using tools
@@ -182,28 +175,41 @@ nc 127.0.0.1 2000
 almost immediately, but not before receiving the current time from the server,
 like so:
 
-![telnetting to the time server][time-telnet-screenshot]
+![connecting to the time server][time-client-screenshot]
 
 ### Echo Server
+
+**Note**: The echo server is incomplete and it's your job to complete it.
+Keep reading to see what an "echo server" is supposed to do.
 
 An "echo server" reads a single line of input from any client that connects,
 echoes that same line back to the client, closes the connection, and then starts
 waiting again for the next client to connect.
 
-You can run
+In other words, the server works like this:
+
+1. Wait for a client to connect
+1. Once the client connects, wait for them to send data
+1. Whatever data the client sends, send that same data back to the client (hence "echo")
+1. Close the connection
+1. Wait for another client
+
+To start the server, run this command:
 
 ```console
 node echo-server.js
 ```
 
-but it won't do anything yet.  Open up `echo-server.js` and take a stab at
+You can use `nc` to connect to it on port `2001`, but it won't do anything yet.
+You will have to edit `echo-server.js` and implement the intended functinality.
+Open up `echo-server.js` and take a stab at
 implementing the "echo" functionality.
 
 To check whether your server is doing what you expect, connect to it using
 the `nc` command and type a line of text.  You should see something like this
 once its working correctly:
 
-![telnetting to the echo server][echo-telnet-screenshot]
+![connecting to the echo server][echo-client-screenshot]
 
 Feel free to change its behavior — the point is to understand what's going on
 and get feedback on your implementation!
@@ -242,6 +248,7 @@ Then a client should be able to connect and type `hello.txt` to see the contents
 
 Think up an idea for your own server and implement it!
 
-[time-server-screenshot]:http://f.cl.ly/items/1Y1f2s3u3K0O2c1I2J2a/Screen%20Shot%202014-06-09%20at%202.33.39%20AM.png
-[time-telnet-screenshot]:http://f.cl.ly/items/0P3j0V2r1f3R1l331T1h/Screen%20Shot%202014-06-09%20at%202.36.49%20AM.png
-[echo-telnet-screenshot]:http://f.cl.ly/items/1Z2j232f2x0X2M332S3T/Screen%20Shot%202014-06-09%20at%203.06.32%20AM.png
+[time-server-screenshot]:https://user-images.githubusercontent.com/37304/168487635-7e084b9e-024b-4fc0-83e2-e1cc1a47c2f3.png
+[time-client-screenshot]:https://user-images.githubusercontent.com/37304/168487691-7f8352c2-b247-4dae-b763-ae6c0cc732f5.png
+[echo-server-screenshot]:https://user-images.githubusercontent.com/37304/168487747-07f731ba-6db5-474f-8c9b-9b5c0588b63d.png
+[echo-client-screenshot]:https://user-images.githubusercontent.com/37304/168487905-7aa5e6b3-d8f4-408a-b22b-5f8592bb9aff.png
